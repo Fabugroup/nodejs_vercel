@@ -3,15 +3,15 @@ const cors = require("cors");
 
 const app = express();
 
-// Temporary storage of employees
+// Temporary storage (Note: will reset frequently on Vercel serverless functions)
 const employees = [];
 
-//Middleware
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-// API end point for saving  employee information
-app.post("/.api/employees", (req, res) => {
+// API endpoint for saving employee information (Removed the '.' before /api)
+app.post("/api/employees", (req, res) => {
   const newEmployee = req.body;
   employees.push(newEmployee);
 
@@ -22,10 +22,10 @@ app.post("/.api/employees", (req, res) => {
     .json({ success: true, message: "Employee added successfully" });
 });
 
-// adding end point for retrieving all employee information
-app.get("/.api/employees", (req, res) => {
+// API endpoint for retrieving all employee information (Removed the '.' before /api)
+app.get("/api/employees", (req, res) => {
   res.json(employees);
 });
 
-//export instead of listen
+// Export instead of listen for Vercel
 module.exports = app;
