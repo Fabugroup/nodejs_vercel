@@ -29,4 +29,4 @@ app.get('/employee', (req, res) => {
 })
     
 // export instead of listen
-module export = app;
+module exports = app;
