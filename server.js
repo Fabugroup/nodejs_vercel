@@ -23,7 +23,7 @@ app.post("/employees", (req, res) => {
 });
 
 // adding end point for retrieving all employee information
-app.get("/employees", (req, res) => {
+app.get("/api/employees", (req, res) => {
   res.json(employees);
 });
 
