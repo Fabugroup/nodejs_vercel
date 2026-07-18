@@ -1,32 +1,36 @@
-const express = require('express');
-const cors = require('cors');
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
 
-// Temporsry storage of employees
-const employees = []
+// Temporary storage of employees
+const employees = [];
 
-// Middle 
+//Middleware
 app.use(cors());
 app.use(express.json());
 
-// API end point for savin employee instruction
-app.post("/employee", (req, res) => {
-    const newEmployee = req.body;
-    employees.push(newEmployee);
-    
-    console.log(newEmployee);
+// API end point for saving  employee information
+app.post("/employees", (req, res) => {
+  const newEmployee = req.body;
+  employees.push(newEmployee);
 
-    res
-        .status(201)
-        .json({ success: true, message: "Employee added successfully" });
+  console.log(newEmployee);
+
+  res
+    .status(201)
+    .json({ success: true, message: "Employee added successfully" });
 });
 
 // adding end point for retrieving all employee information
-app.get('/employee', (req, res) => {
-    res.json(employees);
-    
-})
+app.get("/employees", (req, res) => {
+  res.json(employees);
+});
+
+// start server
+app.listen(3000, () => {
+  console.log("Server started on port 3000");
+});
     
 // export instead of listen
 module.exports = app;
