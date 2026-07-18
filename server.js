@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 // API end point for saving  employee information
-app.post("./api/employees", (req, res) => {
+app.post("/.api/employees", (req, res) => {
   const newEmployee = req.body;
   employees.push(newEmployee);
 
@@ -23,7 +23,7 @@ app.post("./api/employees", (req, res) => {
 });
 
 // adding end point for retrieving all employee information
-app.get("./api/employees", (req, res) => {
+app.get("/.api/employees", (req, res) => {
   res.json(employees);
 });
 
